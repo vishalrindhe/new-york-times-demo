@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'new-york-times-demo';
+
+  constructor(private router: Router){
+      // this.router.navigateByUrl('dashboard')
+  }
 }

@@ -1,0 +1,12 @@
+<p>dashboard works!</p>
+<h1>dfcgvhbkjn</h1>
+
+<!-- {{ info?.results }} -->
+<ul>
+<li *ngFor="let item of info?.results; let i = index">
+    <p>{{ item?.abstract }}</p>
+    <p>{{ item?.byline }}</p>
+    <img src={{item?.multimedia[0].url}} />
+    <p>{{ item?.title }}</p>
+</li>
+</ul>
