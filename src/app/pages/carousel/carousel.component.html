@@ -13,13 +13,18 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src={{info?.results[0].multimedia[0].url}} class="d-block w-100" alt="..." height="400" />
+            <!-- <img src={{info?.results[0]?.multimedia[0]?.url}} class="d-block w-100" alt="..." height="400" /> -->
+            <img [src]="info?.results[0]?.media[0]['media-metadata'][0].url" class="d-block w-100" alt="..." height="400" />
+
+            
             <div class="carousel-caption d-none d-md-block">
-                <h3>{{info?.results[0].abstract}}</h3>
+                <h3>{{info?.results[0]?.abstract}}</h3>
             </div>
         </div>
         <div class="carousel-item" *ngFor="let item of info?.results | slice: 1:5" >
-            <img src={{item.multimedia[0].url}} class="d-block w-100" alt="..." height="400" />
+            <!-- <img src={{item?.multimedia[0]?.url}} class="d-block w-100" alt="..." height="400" /> -->
+            <img [src]="item?.media[0]['media-metadata'][0].url" class="d-block w-100" alt="..." height="400" />
+
             <div class="carousel-caption d-none d-md-block">
                 <h3>{{item.abstract}}</h3>
             </div>

@@ -22,6 +22,7 @@ import { SlicePipe } from './pipes/slice.pipe';
 import { SideBarToCarouselComponent } from './pages/side-bar-to-carousel/side-bar-to-carousel.component';
 import { BelowCarouselComponent } from './pages/below-carousel/below-carousel.component';
 import { MenuBarComponent } from './pages/menu-bar/menu-bar.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MenuBarComponent } from './pages/menu-bar/menu-bar.component';
     SlicePipe,
     SideBarToCarouselComponent,
     BelowCarouselComponent,
-    MenuBarComponent
+    MenuBarComponent,
+    FooterComponent
 
   ],
   imports: [

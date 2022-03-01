@@ -15,23 +15,19 @@ export class DashboardComponent implements OnInit {
   topPosToStartShowing = 100;
   menuValue='home'
   topStoryData:any
+  topStoryData1:any
+  currentDate = new Date();
+
   constructor(private data: DataService, private spinner: NgxSpinnerService,private viewportScroller: ViewportScroller) { }
 
   ngOnInit(): void {
-    // this.spinner.show();
-    this.addItem('home');
-    this.data.topStoriesArts().subscribe((info: any) => {
-      this.info = info
-      console.log(this.info);
-      // this.spinner.hide();
-    })
-
-    // this.spinner.show();
-    this.data.archive().subscribe((info: any) => {
-      // this.info = info
-      console.log(info);
-      
-    })
+    this.spinner.show();
+    this.addItem(this.menuValue);
+    // this.data.topStoriesArts().subscribe((info: any) => {
+    //   this.info = info
+    //   console.log(this.info);
+    //   this.spinner.hide();
+    // })
 
   }
   @HostListener('window:scroll')
@@ -61,15 +57,39 @@ export class DashboardComponent implements OnInit {
 
 
   addItem(newItem: string) {
+    this.spinner.show();
+
     // this.items.push(newItem);
     this.menuValue = newItem
-    alert(this.menuValue)
+    // alert(this.menuValue)
+    if(newItem == 'home'){
+      this.data.mostPopularViewed().subscribe(val =>{
+        this.topStoryData = val
+      // console.log("homeVal:",this.topStoryData);
+      this.spinner.hide()   
+      })
+      this.data.archive().subscribe(val =>{
+        this.topStoryData1 = val
+      console.log("archive:",this.topStoryData1.response.docs[0]);
+      this.spinner.hide()   
+      })
+    }else{
     this.data.topStories(newItem).subscribe(val =>{
       this.topStoryData = val
-      console.log("val:",this.topStoryData);
-      
+      // console.log("val:",this.topStoryData);
+      this.spinner.hide()   
     })
+  }
 
+  }
+
+  timeDifference(val:any){
+    var startDate = new Date(this.currentDate);
+
+    var endDate = new Date(val);
+    // console.log(startDate+":"+endDate);
+    var Time = Math.abs((endDate.getTime() - startDate.getTime())/3600000);
+    return Time
   }
 
 

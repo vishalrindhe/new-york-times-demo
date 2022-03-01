@@ -13,11 +13,19 @@ export class DataService {
   year:any
   todaysDate:any
   httpOptionsNoAuth : any;
+  a  = '2022-03-01T04:14:50-05:00'
 
   constructor(private http: HttpClient, private router: Router) {
+  
     this.date = new Date();
     this.year = this.date.getFullYear()
     this.todaysDate = this.date.getMonth() + 1
+    console.log(this.date);
+    this.mostPopularViewed().subscribe(val =>{
+      console.log("abc:",val?.results[0]?.media[0]["media-metadata"][0].url);
+      
+    })
+    
    }
 
 

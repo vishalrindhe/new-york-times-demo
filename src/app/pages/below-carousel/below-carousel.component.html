@@ -7,7 +7,11 @@
             </div>
             <div class="col-6 d-flex justify-content-center border-end">
                 <div class="mx-2 d-flex justify-content-center">
-                    <img class=" shadow border border-1 mb-2 imageWidth" src={{info?.results[7]?.multimedia[0]?.url}}>
+                    <!-- <img class=" shadow border border-1 mb-2 imageWidth" src={{info?.results[7]?.multimedia[0]?.url}}> -->
+                    <img class=" shadow border border-1 mb-2 imageWidth" [src]="info?.results[5]?.media[0]['media-metadata'][0].url">
+
+                    
+                    
                 </div>
                 
             </div>
@@ -21,7 +25,9 @@
             </div>
             <div class="col-6 d-flex justify-content-center border-end">
                 <div class="mx-2 d-flex justify-content-center">
-                    <img class=" shadow border border-1 mb-2 imageWidth" src={{info?.results[8]?.multimedia[0]?.url}}>
+                    <!-- <img class=" shadow border border-1 mb-2 imageWidth" src={{info?.results[8]?.multimedia[0]?.url}}> -->
+                    <img class=" shadow border border-1 mb-2 imageWidth" [src]="info?.results[8]?.media[0]['media-metadata'][0].url">
+
                 </div>
                 
             </div>

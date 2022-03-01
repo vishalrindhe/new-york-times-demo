@@ -1,16 +1,15 @@
-
 <div class="container">
     <div class="row">
         <div class="col">
-            <app-menu-bar (newItemEvent)="addItem($event)"></app-menu-bar>
+            <app-menu-bar (newItemEvent)="addItem($event)" [menuValue]="menuValue"></app-menu-bar>
         </div>
     </div>
-   
+
 
     <div *ngIf="menuValue == 'home'">
         <div class="row">
             <div class="col">
-                <app-live [info]="topStoryData" ></app-live>
+                <app-live [info]="topStoryData"></app-live>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -26,39 +25,126 @@
         </div>
         <div class="row">
             <app-below-carousel [info]="topStoryData"></app-below-carousel>
-    
+
         </div>
-        <div class="row ">
-            <!-- <ul>
-                <li *ngFor="let item of info?.results| slice:3:10; let i = index">
-                    <p>{{ item?.abstract }}</p>
-                    <p>{{ item?.byline }}</p>
-                    <img src={{item?.multimedia[0].url}} />
-                    <p>{{ item?.title }}</p>
-                </li>
-                </ul> -->
+        <div class="row d-flex justify-content-center align-content-center">
+           <div class="col-3  card m-2" *ngFor="let item of topStoryData1?.response?.docs | slice:1:10;let i=index">
+               <div class="row bg-light bg-gradient p-2">
+                <span class="fw-bolder text-center ">{{item?.abstract}}</span>
+               </div>
+            <span class="p-2" style="font-size: small;" >{{item?.lead_paragraph}}</span><br>
+
+            <!-- <div class="row align-self bg-light bg-gradient p-2 text-muted" style="font-size: small;">
+                <div class="col-4 d-flex justify-content-start align-items-end">
+                    <span>  {{timeDifference(item?.pub_date) | number: '1.0-0'}} hrs. ago</span>
+                </div>
+                <div class="col-8 d-flex justify-content-end">
+                    <span class=""> - {{item?.byline.original}}</span>
+                </div>
+            </div> -->
+            
+            <!-- <hr> -->
+           </div>
+           <!-- <hr> -->
+
         </div>
     </div>
 
     <div *ngIf="menuValue != 'home'">
         <div class="row mt-3">
-            {{menuValue | titlecase}} News
+            <div class="col fs-2 fw-bolder">
+                <b>{{menuValue | titlecase}} News</b>
+            </div>
         </div>
+        <hr>
+        <span class="text-muted" style="font-size: small;"
+            [ngClass]="topStoryData?.results[0]?.des_facet.length-1 == i ? '':'border-end '"
+            *ngFor="let item of topStoryData?.results[0]?.des_facet;let i = index">
+            <span class="mx-2">{{item}}</span>
+        </span>
+        <hr class="darkHr">
         <div class="row">
             <div class="col-9">
+                <div class="row">
+                    <div class="col text-center">
+                        <img class="imageWidth2 shadow " src={{topStoryData?.results[0]?.multimedia[0]?.url}} alt="">
+                        <br>
+                        <br>
+                        <span class="fs-4 fw-bolder">{{topStoryData?.results[0]?.title}}</span>
+                        <br>
+                        <span class="fw-lighter opacity-75">{{topStoryData?.results[0]?.abstract}}</span>
+                        <br>
+                        <span class="text-muted" style="font-size: small;"> {{
+                            timeDifference(topStoryData?.results[0]?.updated_date) | number: '1.0-0'}} hrs. ago
+                            <span class="m-3"> - {{topStoryData?.results[0]?.byline}}</span>
+                        </span>
 
+
+                    </div>
+                </div>
+                <hr class="darkHr">
+                <div *ngFor="let item of topStoryData?.results | slice:10:20 ;let i = index">
+                    <div class="row" *ngIf="item?.title != '' || item?.title != null">
+                        <div class="col-2">
+                            <span class="text-muted" style="font-size: small;"> {{ item?.updated_date | date:"mediumDate" }}
+                            </span>
+                        </div>
+                        <div class="col-7">
+                            <span class="fw-bold">{{item?.title}}</span>
+                            <br>
+                            <span class="">{{item?.abstract}}</span>
+                            <br>
+                            <span class="text-muted" style="font-size: small;"> {{ timeDifference(item?.updated_date) |
+                                number: '1.0-0'}} hrs. ago
+                                <span class="m-3"> - {{item?.byline}}</span>
+                            </span>
+                        </div>
+                        <div class="col-3">
+                            <img class="imageWidth3 shadow" src={{item?.multimedia[0]?.url}} alt="">
+                        </div>
+                        <!-- <div class="col-1"></div> -->
+                        <hr *ngIf="i != 9">
+                    </div>
+                </div>
+                
             </div>
             <div class="col-3">
-
+                <div *ngFor="let item of topStoryData?.results | slice:1:10 ;let i = index">
+                    <div class="row" *ngIf="item?.title != '' || item?.title != null || item?.multimedia != null">
+                        <div class="col-8">
+                            <span class="fw-bold">{{item?.title}}</span>
+                        </div>
+                        <div class="col-4">
+                            <div *ngIf="item?.multimedia != null || item?.multimedia != ''">
+                                <img  class="imageWidth shadow" src={{item?.multimedia[0]?.url}} alt="">
+                            </div>
+                            
+                        </div>
+                        <div class="col-12">
+                            <span class="" style="font-size: small;">{{item?.abstract}}</span><br>
+                            <span class="text-muted" style="font-size: x-small;"> {{ timeDifference(item?.updated_date) |
+                                number: '1.0-0'}} hrs. ago
+                                <span class="m-3"> - {{item?.byline}}</span>
+                            </span>
+    
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                
             </div>
         </div>
-        {{menuValue}}
-        {{topStoryData?.results[0].title}}
     </div>
+    <div class="row">
+        <div class="col">
+            <app-footer></app-footer>
+        </div>
     </div>
-    
 
-<button *ngIf="isShow" (click)="scrollToTop()" class="btn btn-light btn-outline-dark rounded-circle goToTop" >
+</div>
+
+
+<button *ngIf="isShow" (click)="scrollToTop()" class="btn btn-light btn-outline-dark rounded-circle goToTop">
     <i class="fas fa fa-arrow-up m-2 my-2"></i>
 </button>
 <!-- {{ info?.results }} -->

@@ -1,7 +1,9 @@
 <div class="">
     <div class="row">
         <div class="col d-flex justify-content-center">
-            <img class=" shadow border border-1 mb-2 imageWidth" src={{info?.results[5]?.multimedia[0]?.url}} height="150">
+            <!-- <img class=" shadow border border-1 mb-2 imageWidth" src={{info?.results[5]?.multimedia[0]?.url}} height="150"> -->
+            <img class=" shadow border border-1 mb-2 imageWidth" [src]="info?.results[5]?.media[0]['media-metadata'][0].url" height="150">
+            
         </div>
         
 

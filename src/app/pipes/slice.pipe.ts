@@ -10,14 +10,20 @@ export class SlicePipe implements PipeTransform {
   // }
 
   public transform(arr: Array<any>, minLength: number, maxLength: number) {
-    // let newArr = arr.slice();
-    // if (minLength && newArr.length < minLength) {
-    //   newArr.length = minLength;
-    // } else if (maxLength && newArr.length > maxLength) {
-    //   newArr.length = maxLength;
+    let newArr:any
+    // if(arr.length == 0){
+    //   newArr = ['']
+    // } else
+    //  if (maxLength > arr.length) {
+    //   newArr = arr?.slice(minLength,arr.length)
+    //   console.log(newArr.length);
+      
+    // } else {
+    //   newArr = arr?.slice(minLength,maxLength)
+    //   console.log(newArr.length);
     // }
     // return newArr;
-    let newArr = arr?.slice(minLength,maxLength)
+    newArr = arr?.slice(minLength,maxLength)
     return newArr;
   }
 

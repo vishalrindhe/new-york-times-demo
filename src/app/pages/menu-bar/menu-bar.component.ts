@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Output, EventEmitter } from '@angular/core';
 export class MenuBarComponent implements OnInit {
   
   @Output() newItemEvent = new EventEmitter<string>();
-  menuValue = 'home';
+  @Input() menuValue = 'home';
   constructor() { }
 
   ngOnInit(): void {
