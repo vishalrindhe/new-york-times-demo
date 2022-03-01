@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-6">
+        <div class="row">
+            <div class="col-6">
+                <b class="fs-6"> {{info?.results[7]?.title}}</b>
+                <p class="fw-light text-muted" style="font-size: medium;" >{{info?.results[7]?.abstract}}</p>
+            </div>
+            <div class="col-6 d-flex justify-content-center border-end">
+                <div class="mx-2 d-flex justify-content-center">
+                    <img class=" shadow border border-1 mb-2 imageWidth" src={{info?.results[7]?.multimedia[0]?.url}}>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+        <div class="col-6">
+            <div class="row">
+            <div class="col-6">
+                <b class="fs-6"> {{info?.results[8]?.title}}</b>
+                <p class="fw-light text-muted" style="font-size: medium;" >{{info?.results[8]?.abstract}}</p>
+            </div>
+            <div class="col-6 d-flex justify-content-center border-end">
+                <div class="mx-2 d-flex justify-content-center">
+                    <img class=" shadow border border-1 mb-2 imageWidth" src={{info?.results[8]?.multimedia[0]?.url}}>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+</div>
+<hr>
+<div class="row row-cols-4">
+    <div class="col border-end" *ngFor="let item of info?.results| slice:10:13">
+        <div >
+            <b class="fs-6"> {{item?.title}}</b>
+        </div>
+    </div>
+    <div class="col">
+        <div >
+            <b class="fs-6"> {{info?.results[13]?.title}}</b>
+        </div>
+    </div>
+</div>
+<hr>
+
+<!-- {{info?.results[0]?.title}} -->

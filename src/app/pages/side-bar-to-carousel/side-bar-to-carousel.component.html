@@ -1,0 +1,21 @@
+<div class="">
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <img class=" shadow border border-1 mb-2 imageWidth" src={{info?.results[5]?.multimedia[0]?.url}} height="150">
+        </div>
+        
+
+    </div>
+    <div class="row">
+        <div class="col ">
+            <b class="fs-6"> {{info?.results[5]?.title}}</b>
+            <hr>    
+        </div>
+    </div>
+    <!-- <div *ngFor="let item of info?.results | slice:6:8"> -->
+        <b class="fs-6"> {{info?.results[6]?.title}}</b>
+        <p class="fw-light text-muted" style="font-size: medium;" >{{info?.results[6]?.abstract}}</p>
+        <hr>
+       <!-- <b> {{item.title}}</b> -->
+    <!-- </div> -->
+</div>

@@ -1,12 +1,64 @@
-<p>dashboard works!</p>
-<h1>dfcgvhbkjn</h1>
 
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <app-menu-bar (newItemEvent)="addItem($event)"></app-menu-bar>
+        </div>
+    </div>
+   
+
+    <div *ngIf="menuValue == 'home'">
+        <div class="row">
+            <div class="col">
+                <app-live [info]="topStoryData" ></app-live>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-9 my-3">
+                <app-carousel [info]="topStoryData"></app-carousel>
+            </div>
+            <div class="col-3 my-3">
+                <app-side-bar-to-carousel [info]="topStoryData"></app-side-bar-to-carousel>
+            </div>
+            <!-- <div class="my-1">
+                <hr>
+            </div> -->
+        </div>
+        <div class="row">
+            <app-below-carousel [info]="topStoryData"></app-below-carousel>
+    
+        </div>
+        <div class="row ">
+            <!-- <ul>
+                <li *ngFor="let item of info?.results| slice:3:10; let i = index">
+                    <p>{{ item?.abstract }}</p>
+                    <p>{{ item?.byline }}</p>
+                    <img src={{item?.multimedia[0].url}} />
+                    <p>{{ item?.title }}</p>
+                </li>
+                </ul> -->
+        </div>
+    </div>
+
+    <div *ngIf="menuValue != 'home'">
+        <div class="row mt-3">
+            {{menuValue | titlecase}} News
+        </div>
+        <div class="row">
+            <div class="col-9">
+
+            </div>
+            <div class="col-3">
+
+            </div>
+        </div>
+        {{menuValue}}
+        {{topStoryData?.results[0].title}}
+    </div>
+    </div>
+    
+
+<button *ngIf="isShow" (click)="scrollToTop()" class="btn btn-light btn-outline-dark rounded-circle goToTop" >
+    <i class="fas fa fa-arrow-up m-2 my-2"></i>
+</button>
 <!-- {{ info?.results }} -->
-<ul>
-<li *ngFor="let item of info?.results; let i = index">
-    <p>{{ item?.abstract }}</p>
-    <p>{{ item?.byline }}</p>
-    <img src={{item?.multimedia[0].url}} />
-    <p>{{ item?.title }}</p>
-</li>
-</ul>

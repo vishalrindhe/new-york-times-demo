@@ -1,0 +1,10 @@
+
+
+{
+  "/api/*": {
+  "target": "hhttp://api.nytimes.com/svc/archive/v1/2022/2.json?api-key=3zBDwMAdzACydjjxz4typg1ZRSJLZGqN",
+  "secure": false,
+  "logLevel": "debug",
+  "changeOrigin": true
+  }
+  }

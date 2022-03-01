@@ -1,0 +1,21 @@
+div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    // top: 0;
+    bottom: 0 vh;
+    padding: 5px;
+    background-color: #cae8ca;
+    border: 2px solid #4CAF50;
+
+    // position: fixed;
+    // bottom: 15px;
+    // right: 15px;
+    // opacity: 0;
+    // transition: all .2s ease-in-out;
+  }
+
+  .goToTop{
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+  }
